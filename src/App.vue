@@ -1,16 +1,40 @@
 <template>
   <div id="app">
-    <Table></Table>
+    <BSDataTable
+      id="bs_table"
+      :columns="columns"
+      :rows="rows"
+    ></BSDataTable>
   </div>
 </template>
 
 <script>
-import Table from './components/Table'
+import BSDataTable from './components/BSDataTable'
 
 export default {
   name: 'app',
   components: {
-    Table
+    BSDataTable
+  },
+  data () {
+    return {
+      columns: [{
+        field: 'name',
+        label: 'Nome'
+      },
+      {
+        field: 'gender',
+        label: 'Genero'
+      },
+      {
+        field: 'age',
+        label: 'Idade'
+      }],
+      rows: []
+    }
+  },
+  mounted () {
+    this.rows = require('assets/data.json')
   }
 }
 </script>
